@@ -8,14 +8,14 @@ const Note = require("../models/note");
 const Wine = require("../models/wine");
 const { selectFields } = require("express-validator/src/select-fields");
 
-// Test API
+// Test API - Get 5 bottles
 
 // Get All bottles
 const getBottles = async (req, res, next) => {
   // console.log("Get All Bottles");
   let bottles;
   try {
-    bottles = await Bottle.find({});
+    bottles = await Bottle.find({}).limit(5);
   } catch (err) {
     const error = new HttpError(
       "E010 - Fetching wines failed, please try again later.",
